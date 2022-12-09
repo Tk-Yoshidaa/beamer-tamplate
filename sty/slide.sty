@@ -1,0 +1,248 @@
+
+%%% usepackage %%%
+\usepackage{float, amsmath, latexsym, amssymb, bm, ascmac, mathtools, multicol, tcolorbox, subfig, url, ulem, bbm}
+% \usepackage{enumitem}
+\usepackage{algorithm2e}
+\usepackage{algorithmic}
+% \usepackage[noend]{algpseudocode}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{tikz} % 外見用
+\usepackage{atbegshi} % 文字化け対策
+\usepackage{array}
+\usepackage{caption}
+\usepackage{arydshln} % hdashline cdashline
+\usepackage{natbib}
+\usepackage{tcolorbox}
+
+\newcommand{\myfigure}[2]{\begin{figure}%
+    \centering\includegraphics[width=#1\hsize]{{#2}}\end{figure}}
+
+
+\renewcommand{\kanjifamilydefault}{\gtdefault} % ゴシック体に設定
+\renewcommand{\baselinestretch}{1.15} % 行間を1.3倍に
+\renewcommand{\figurename}{}
+\renewcommand{\thefootnote}{*\arabic{footnote}}
+
+
+\tcbuselibrary{skins} % tcolorboxでenhancedを利用
+\captionsetup[figure]{font=scriptsize}
+\usetikzlibrary{shadings, calc, intersections}
+
+
+%%% tcolorboxの設定 %%%
+\newtcolorbox{tblock}[2][]{
+    enhanced,
+    title={\vspace{1pt}\large\textbf{#2}},
+    colframe=red!70!black!50!white,
+    % colframe=red!70!black!30!white,
+    colbacktitle=white,
+    % colbacktitle=red!70!black!50!white,
+    colback=white,
+    coltitle=black,
+    top=1mm, bottom=1mm, left=1mm, right=1mm,
+    boxrule=0.65pt,
+    leftrule=-1pt, rightrule=-1pt,
+    sharp corners,
+    % frame style={left color=red!70!black,
+    %     right color=black}, 
+    % title style={left color=white,
+    %     right color=red!70!black!50!white},
+    boxed title style={sharp corners=all, boxrule=-10pt}, #1}
+\renewenvironment{block}[1]{\begin{tblock}{#1}}{\end{tblock}}
+\newtcolorbox{tbox}[2][]{
+    enhanced,
+    title={\large #2},
+    colframe=red!70!black, colbacktitle=white, colback=white, coltitle=black,
+    top=1mm, bottom=1mm, left=1mm, right=1mm,
+    boxrule=-1pt,
+    attach boxed title to top left={xshift=3mm, yshift*=-\tcboxedtitleheight/2},
+    sharp corners,
+    boxed title style={
+        sharp corners=all, boxrule=-1pt, bottomrule=1.5pt}, #1}
+\newtcolorbox{tblocknotitle}[1][]{
+    enhanced,
+    colframe=red!70!black,
+    colbacktitle=white, colback=white, coltitle=black,
+    top=1mm, bottom=1mm, left=1mm, right=1mm,
+    boxrule=0.5pt,
+    leftrule=-1pt, rightrule=-1pt,
+    attach boxed title to top left={xshift=3mm, yshift*=-\tcboxedtitleheight/2},
+    sharp corners,
+    boxed title style={sharp corners=all, boxrule=-1pt}, #1}
+\renewenvironment{screen}{\begin{tblocknotitle}\centering}{\end{tblocknotitle}}
+
+
+%%% 外見 %%%
+\setbeamertemplate{bibliography item}[text]
+\useinnertheme{rectangles}
+\usefonttheme{professionalfonts}
+\setbeamercolor{structure}{fg=black}
+\newlength\bodywd
+\setlength\bodywd{.95\linewidth}
+
+
+%%% frame title の変更 %%%
+\setbeamertemplate{frametitle}{%
+    \vskip1.5ex%
+    \hspace{10pt}{\Large\insertframetitle}%
+    \\\vspace{-11pt}
+    \begin{beamercolorbox}{frametitle}
+        \begin{tikzpicture}
+            \draw[gray!40!black, line width=1pt] (0.9,-0.05)--(1.05\bodywd,-0.05);
+            \draw[red!80!black, line width=1pt] (0,0)--(0.95\bodywd,0);
+        \end{tikzpicture}
+    \end{beamercolorbox}
+}
+
+
+\setbeamertemplate{navigation symbols}{} % ナビゲーションバー非表示
+\setbeamertemplate{footline}[frame number]%スライド番号のみ表示
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{itemize item}{\checkmark}
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}{--}
+\setbeamercolor{itemize subitem}{fg=gray}
+\setbeamercolor{section number projected}{bg=white,fg=black}
+\setbeamercolor{subsection number projected}{bg=white,fg=black}
+% \setbeamertemplate{subsection in toc}[subsections numbered]
+\setbeamertemplate{section in toc}{%
+    \leavevmode\leftskip=1.75ex%
+    \llap{%
+        \usebeamerfont*{section number projected}%
+        \usebeamercolor[bg]{section number projected}%
+        \vrule width2.25ex height1.85ex depth.4ex%
+        \hskip-2.25ex%
+        \hbox to2.25ex{\large \hfil\color{fg}$\mathbf{\inserttocsectionnumber}$\hfil}
+        \hskip-1.25ex
+    }%
+    {\Large .}\kern1.25ex\inserttocsection\par
+}
+\setbeamertemplate{subsection in toc}{%
+    \leavevmode\leftskip=1.75ex%
+    \kern3.0ex%
+    \small
+    \llap{%
+        \usebeamerfont*{subsection number projected}%
+        \usebeamercolor[bg]{subsection number projected}%
+        \vrule width2.25ex height1.85ex depth.4ex%
+        \hskip-2.25ex%
+        \hbox to2.25ex{\hfil\color{fg}$\mathbf{\inserttocsubsectionnumber}$\hfil}
+        \hskip-1.25ex
+    }%
+    {\normalsize .}\kern1.25ex\inserttocsubsection\par
+}
+
+
+%%
+%%culine.sty by Ohishi Masaru
+%%
+\def\colorunderline[#1]#2#3{%
+{\color[#1]{#2}\underline{\textcolor[named]{Black}{#3}}}%
+}%
+
+
+%%% 日付 alignment 用マクロ %%%
+\def\WordCount#1{% 
+    \@tempcnta\z@%
+    \@tfor \@tempa:=#1\do{\advance\@tempcnta\@ne}%
+    \the\@tempcnta
+}
+\newlength{\len}
+\settowidth{\len}{0}
+\makeatletter
+\def\InsertSpace#1{%
+    \@tempcnta\z@%
+    \@tfor \@tempa:=#1\do{\advance\@tempcnta\@ne}%
+    \ifodd \the\@tempcnta \hspace{\len}\else\fi
+}
+\newlength{\lenscript}
+\settowidth{\lenscript}{\scriptsize 0}
+\makeatother
+
+
+%%% bibliography setting %%%
+\setbeamertemplate{bibliography item}[text]
+
+%%% しおりの文字化け解消 -> ???%%%
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+
+
+%%% newcommand %%%
+\newcommand{\red}[1]{\textcolor{red!70!black}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue!50!cyan}{#1}}
+\newcommand{\gray}[1]{\textcolor{white!60!black}{#1}}
+\newcommand{\vs}{\vspace{0.3cm}}
+\newcommand{\hs}{\hspace{0.2cm}}
+\newcommand{\ra}{$\rightarrow\;$}
+\newcommand{\brm}[1]{{\bm {\mathrm {#1}}}}
+\newcommand{\intd}{\mathrm{d}}
+\newcommand{\where}{\;\;\mathrm{where}\;\;\;}
+\newcommand{\datefmt}[2]{\InsertSpace{#1}#1/\InsertSpace{#2}#2}
+\newcommand{\hl}{\hspace{\len}}
+\newcommand{\ab}{{\\}}
+\newcommand{\tab}{{\\\quad\quad}}
+\newcommand{\ttab}{{\\\quad\quad\quad\quad}}
+\newcommand{\da}{{\textbf{\LARGE\[\Downarrow\]}}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+
+
+%%% underline 関連の設定 %%%
+\newcommand\titleline[1]{%
+    \protect\leavevmode{%
+        \color{white!80!black!50!red}%
+        \vtop{%
+            \hbox{\color{black} #1}%
+            \kern-\prevdepth
+            \kern0.75mm\relax
+            \hrule height 0.4mm\relax
+            \kern-0.75mm\relax
+            \kern-0.4mm\relax}}}
+\renewcommand\underline[1]{\titleline{#1}}
+
+
+
+
+%%% Title page の変更 %%%
+\setbeamertemplate{title page}{%
+    {%
+        \usebeamercolor[fg]{title}
+        \usebeamerfont{title}
+        \inserttitle
+    }
+    \par
+    {%
+        \color{red!80!black}
+        \rule{\linewidth}{1pt}
+    }
+    \par
+    {%
+        \usebeamercolor[fg]{author}
+        \usebeamerfont{author}\small
+        % \begin{flushright}
+        \insertauthor
+        \\{\scriptsize\insertinstitute}
+        % \end{flushright}
+        % \quad -- \; 
+    }
+    \par\medskip
+    {%
+        \usebeamercolor[fg]{date}
+        \usebeamerfont{date}\small
+        % \quad -- \; \insertdate
+        \begin{flushright}
+            \insertdate
+        \end{flushright}
+    }
+}
+
+
+% \newcommand{\f}[2]{\begin{frame}{#1}#2\end{frame}}
+% \renewcommand{\list}[1]{\begin{itemize}#1\end{itemize}}

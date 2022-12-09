@@ -1,0 +1,40 @@
+\documentclass[aspectratio=43, dvipdfmx, 10pt]{beamer}
+\usepackage{sty/slide}
+
+%%% Title %%%
+\title{Title}
+\author{Author}
+\date{Month. Day, Year}
+
+%%% At begin of section %%%
+\AtBeginSection[]{
+    \begin{frame}[noframenumbering, plain]
+        \Large
+        $\mathbf{\insertsectionnumber}${\Large .}\kern1.25ex\insertsection
+    \end{frame}
+}
+
+%%% Document %%%
+\begin{document}
+
+%%% Title Frame %%%
+\begin{frame}[noframenumbering]
+	\thispagestyle{empty}
+	\titlepage
+\end{frame}
+
+%%% Table of contents %%%
+\begin{frame}[noframenumbering, plain]
+    \tableofcontents[hideallsubsections]
+\end{frame}
+
+
+%%% References %%%
+% \begin{frame}[noframenumbering, plain, allowframebreaks]{Reference}
+%     \thispagestyle{empty}
+%     \bibliographystyle{unsrtnat}
+%     \bibliography{}
+% \end{frame}
+
+\end{document}
+
