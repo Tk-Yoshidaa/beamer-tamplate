@@ -1,12 +1,12 @@
 .PHONY: create, clean, info
 
 LANG := en
-TARGET := slide_$(LANG).pdf
+TARGET := slide.pdf
 OBJDIR := .obj
-OBJECT := $(OBJDIR)/$(LANG)
-SOURCE := ./src/$(LANG)
-TARGET_TEX := $(patsubst %_$(LANG).pdf,$(SOURCE)/%.tex,$(TARGET))
-TARGET_DVI := $(patsubst %_$(LANG).pdf,$(OBJECT)/%.dvi,$(TARGET))
+OBJECT := $(OBJDIR)
+SOURCE := .
+TARGET_TEX := $(patsubst %.pdf,$(SOURCE)/%.tex,$(TARGET))
+TARGET_DVI := $(patsubst %.pdf,$(OBJECT)/%.dvi,$(TARGET))
 TARGET_BIB := $(patsubst $(SOURCE)/%.tex,$(OBJECT)/%,$(TARGET_TEX))
 FIG := $(shell find ./fig -type f -not -name "*.gitkeep")
 STY := $(shell find ./sty -type f -name *.sty)
