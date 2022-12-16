@@ -7,7 +7,9 @@
 \date{Month. Day, Year}
 
 %%% At begin of section %%%
-\AtBeginSection[]{
+\AtBeginSection[
+    {\frame<beamer>[noframenumbering, plain]{\Large\insertsection}}
+]{
     \begin{frame}[noframenumbering, plain]
         \Large
         $\mathbf{\insertsectionnumber}${\Large .}\kern1.25ex\insertsection
@@ -24,8 +26,8 @@
 \end{frame}
 
 %%% Table of contents %%%
-\begin{frame}[noframenumbering, plain]
-    \tableofcontents[hideallsubsections]
+\begin{frame}[noframenumbering]{Table of Contents}
+    \tableofcontents
 \end{frame}
 
 
