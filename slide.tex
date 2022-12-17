@@ -1,4 +1,4 @@
-\documentclass[aspectratio=43, dvipdfmx, 10pt]{beamer}
+\documentclass[t, aspectratio=43, dvipdfmx, 10pt]{beamer}
 \usepackage{sty/slide}
 
 %%% Title %%%
@@ -8,9 +8,9 @@
 
 %%% At begin of section %%%
 \AtBeginSection[
-    {\frame<beamer>[noframenumbering, plain]{\Large\insertsection}}
+    {\frame<beamer>[c, noframenumbering, plain]{\Large\insertsection}}
 ]{
-    \begin{frame}[noframenumbering, plain]
+    \begin{frame}[c, noframenumbering, plain]
         \Large
         $\mathbf{\insertsectionnumber}${\Large .}\kern1.25ex\insertsection
     \end{frame}
@@ -20,7 +20,7 @@
 \begin{document}
 
 %%% Title Frame %%%
-\begin{frame}[noframenumbering]
+\begin{frame}[t, noframenumbering]
 	\thispagestyle{empty}
 	\titlepage
 \end{frame}
