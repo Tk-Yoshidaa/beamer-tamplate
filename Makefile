@@ -9,8 +9,8 @@ TARGET_TEX := $(patsubst %.pdf,$(SOURCE)/%.tex,$(TARGET))
 TARGET_DVI := $(patsubst %.pdf,$(OBJECT)/%.dvi,$(TARGET))
 TARGET_BIB := $(patsubst $(SOURCE)/%.tex,$(OBJECT)/%,$(TARGET_TEX))
 FIG := $(shell find ./fig -type f -not -name "*.gitkeep")
-STY := $(shell find ./sty -type f -name *.sty)
-TEX := $(shell find $(SOURCE) -type f -name *.tex)
+STY := $(shell find ./sty -type f -name '*.sty')
+TEX := $(shell find $(SOURCE) -type f -name '*.tex')
 BIB := .bib
 
 FLAGS := -halt-on-error\
