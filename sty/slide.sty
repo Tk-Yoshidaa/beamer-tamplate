@@ -193,20 +193,18 @@
 
 
 
-
 %%% underline 関連の設定 %%%
 \newcommand\titleline[1]{%
     \protect\leavevmode{%
-        \color{white!80!black!50!red}%
+        \color{red!80!black}%
         \vtop{%
             \hbox{\color{black} #1}%
             \kern-\prevdepth
             \kern0.75mm\relax
-            \hrule height 0.4mm\relax
+            \hrule height 0.3mm\relax
             \kern-0.75mm\relax
-            \kern-0.4mm\relax}}}
+            \kern-0.3mm\relax}}}
 \renewcommand\underline[1]{\titleline{#1}}
-
 
 
 
