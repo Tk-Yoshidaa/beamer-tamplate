@@ -2,8 +2,7 @@
 
 LANG := en
 TARGET := slide.pdf
-OBJDIR := .obj
-OBJECT := $(OBJDIR)
+OBJECT := obj
 SOURCE := .
 TARGET_TEX := $(patsubst %.pdf,$(SOURCE)/%.tex,$(TARGET))
 TARGET_DVI := $(patsubst %.pdf,$(OBJECT)/%.dvi,$(TARGET))
@@ -42,4 +41,4 @@ info:
 	@ if [ -s $(BIB) ]; then echo BIB; fi
 
 clean: 
-	rm -rf *.pdf $(OBJDIR)
+	rm -rf *.pdf $(OBJECT)
